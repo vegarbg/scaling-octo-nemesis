@@ -1,3 +1,7 @@
+requirejs.config({
+    baseUrl: "scripts",
+});
+
 (function() {
     var e, n;
     e = document.querySelectorAll("p")[0];
