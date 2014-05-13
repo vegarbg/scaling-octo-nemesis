@@ -20,7 +20,6 @@ define(function (require) {
             crossroads.parse(newHash);
         };
 
-        crossroads.routed.add(console.log, console);
         hasher.initialized.add(parseHash);
         hasher.changed.add(parseHash);
         hasher.init();
