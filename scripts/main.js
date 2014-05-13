@@ -4,6 +4,7 @@ requirejs.config({
         "signals": "vendor/signals.min",
         "crossroads": "vendor/crossroads",
         "hasher": "vendor/hasher",
+        "domReady": "vendor/domReady",
     },
     shim: {
         "crossroads": {
@@ -15,16 +16,5 @@ requirejs.config({
             exports: "hasher",
         },
     },
-});
-
-requirejs(["crossroads", "hasher"],
-function(crossroads, hasher) {
-    var e, n;
-    e = document.querySelectorAll("p")[0];
-    n = document.createElement("p");
-    n.textContent = "Seems to be working.";
-    e.parentNode.appendChild(n);
-
-    console.log(crossroads);
-    console.log(hasher);
+    deps: [ "base" ],
 });
