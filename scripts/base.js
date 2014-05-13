@@ -5,13 +5,29 @@ define(function (require) {
     hasher = require("hasher");
 
     domReady(function() {
-        var e, n;
-        e = document.querySelectorAll("p")[0];
-        n = document.createElement("p");
-        n.textContent = "Seems to be working.";
-        e.parentNode.appendChild(n);
+        var aboutBtn, aboutBox, parseHash;
 
-        console.log(crossroads);
-        console.log(hasher);
+        crossroads.addRoute("", function() {
+            aboutBox = document.querySelectorAll(".about")[0];
+            aboutBox.style.display = "none";
+        });
+        crossroads.addRoute("about", function() {
+            aboutBox = document.querySelectorAll(".about")[0];
+            aboutBox.style.display = "block";
+        });
+
+        parseHash = function(newHash, oldHash) {
+            crossroads.parse(newHash);
+        };
+
+        crossroads.routed.add(console.log, console);
+        hasher.initialized.add(parseHash);
+        hasher.changed.add(parseHash);
+        hasher.init();
+
+        aboutBtn = document.querySelectorAll(".btn-about")[0];
+        aboutBtn.addEventListener("click", function() {
+            hasher.setHash("about");
+        });
     });
 });
