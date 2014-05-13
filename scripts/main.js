@@ -6,9 +6,6 @@ requirejs.config({
         "hasher": "vendor/hasher",
     },
     shim: {
-        "signals": {
-            exports: "signals",
-        },
         "crossroads": {
             deps: [ "signals" ],
             exports: "crossroads",
